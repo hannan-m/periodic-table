@@ -39,7 +39,7 @@ export function getElectronConfiguration(atomicNumber: number): string {
     2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10, 6,
   ];
 
-  let config = [];
+  const config = [];
   let electrons = atomicNumber;
 
   for (let i = 0; i < shells.length && electrons > 0; i++) {

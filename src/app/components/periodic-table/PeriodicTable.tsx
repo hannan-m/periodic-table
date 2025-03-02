@@ -26,7 +26,7 @@ const PeriodicTable: React.FC = () => {
     null
   );
   const [showFunMode, setShowFunMode] = useState<boolean>(false);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [_windowWidth, setWindowWidth] = useState<number>(0);
   const tableRef = useRef<HTMLDivElement>(null);
   const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 

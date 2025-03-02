@@ -44,7 +44,6 @@ const ElementDetails: React.FC<ElementDetailsProps> = ({
   const {
     electronConfig,
     physicalState,
-    electronegativity,
     shells,
     commonUses,
     valenceElectrons,
