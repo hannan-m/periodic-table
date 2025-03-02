@@ -1,24 +1,135 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-element-alkali-light: #f87171;
+    --color-element-alkali-dark: #991b1b;
+    --color-element-alkaline-light: #fdba74;
+    --color-element-alkaline-dark: #9a3412;
+    --color-element-transition-light: #fef08a;
+    --color-element-transition-dark: #854d0e;
+    --color-element-postTransition-light: #99f6e4;
+    --color-element-postTransition-dark: #115e59;
+    --color-element-metalloid-light: #86efac;
+    --color-element-metalloid-dark: #166534;
+    --color-element-nonmetal-light: #bfdbfe;
+    --color-element-nonmetal-dark: #1e40af;
+    --color-element-halogen-light: #93c5fd;
+    --color-element-halogen-dark: #1e3a8a;
+    --color-element-noble-light: #e9d5ff;
+    --color-element-noble-dark: #581c87;
+    --color-element-lanthanide-light: #fbcfe8;
+    --color-element-lanthanide-dark: #831843;
+    --color-element-actinide-light: #f9a8d4;
+    --color-element-actinide-dark: #9d174d;
+
+    /* Base theme colors */
+    --background: white;
+    --foreground: #1f2937;
+    --ring: #3b82f6;
+    --ring-light: #93c5fd;
+  }
+
+  .dark {
+    --background: #111827;
+    --foreground: #f9fafb;
+    --ring: #60a5fa;
+    --ring-light: #bfdbfe;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility classes for element background colors */
+@layer utilities {
+  .bg-element-alkali-light {
+    background-color: var(--color-element-alkali-light);
+  }
+  .bg-element-alkali-dark {
+    background-color: var(--color-element-alkali-dark);
+  }
+  .bg-element-alkaline-light {
+    background-color: var(--color-element-alkaline-light);
+  }
+  .bg-element-alkaline-dark {
+    background-color: var(--color-element-alkaline-dark);
+  }
+  .bg-element-transition-light {
+    background-color: var(--color-element-transition-light);
+  }
+  .bg-element-transition-dark {
+    background-color: var(--color-element-transition-dark);
+  }
+  .bg-element-postTransition-light {
+    background-color: var(--color-element-postTransition-light);
+  }
+  .bg-element-postTransition-dark {
+    background-color: var(--color-element-postTransition-dark);
+  }
+  .bg-element-metalloid-light {
+    background-color: var(--color-element-metalloid-light);
+  }
+  .bg-element-metalloid-dark {
+    background-color: var(--color-element-metalloid-dark);
+  }
+  .bg-element-nonmetal-light {
+    background-color: var(--color-element-nonmetal-light);
+  }
+  .bg-element-nonmetal-dark {
+    background-color: var(--color-element-nonmetal-dark);
+  }
+  .bg-element-halogen-light {
+    background-color: var(--color-element-halogen-light);
+  }
+  .bg-element-halogen-dark {
+    background-color: var(--color-element-halogen-dark);
+  }
+  .bg-element-noble-light {
+    background-color: var(--color-element-noble-light);
+  }
+  .bg-element-noble-dark {
+    background-color: var(--color-element-noble-dark);
+  }
+  .bg-element-lanthanide-light {
+    background-color: var(--color-element-lanthanide-light);
+  }
+  .bg-element-lanthanide-dark {
+    background-color: var(--color-element-lanthanide-dark);
+  }
+  .bg-element-actinide-light {
+    background-color: var(--color-element-actinide-light);
+  }
+  .bg-element-actinide-dark {
+    background-color: var(--color-element-actinide-dark);
+  }
+}
+
+/* Custom components for the periodic table */
+@layer components {
+  .element-card {
+    @apply relative flex flex-col items-center justify-center rounded-lg cursor-pointer transition-all;
+  }
+
+  .element-card__number {
+    @apply text-xs opacity-80;
+  }
+
+  .element-card__symbol {
+    @apply text-sm sm:text-lg font-bold;
+  }
+
+  .element-card__name {
+    @apply text-xs truncate w-full text-center hidden sm:block;
+  }
+
+  .element-group-button {
+    @apply px-3 py-1 rounded-full text-sm transition-colors;
+  }
+
+  .theme-toggle-button {
+    @apply p-2 rounded-lg transition-colors;
+  }
 }
