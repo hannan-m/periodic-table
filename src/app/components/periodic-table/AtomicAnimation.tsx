@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { Element } from '../../../types/periodic-table';
 import p5 from 'p5';
 
@@ -39,7 +39,6 @@ const AtomicAnimation: React.FC<AtomicAnimationProps> = React.memo(
     const p5InstanceRef = useRef<p5 | null>(null);
     const nucleusColorRef = useRef<[number, number, number]>([255, 100, 100]);
     const electronParticlesRef = useRef<Electron[]>([]);
-    const [isDarkMode, setIsDarkMode] = useState(true);
 
     // Calculate nucleus color based on element group - memo to avoid recalculation
     const nucleusColor = useMemo<[number, number, number]>(() => {
@@ -93,24 +92,6 @@ const AtomicAnimation: React.FC<AtomicAnimationProps> = React.memo(
 
       electronParticlesRef.current = electrons;
     }, [element.number]);
-
-    useEffect(() => {
-      // Check if dark mode is active
-      const checkDarkMode = () => {
-        setIsDarkMode(document.documentElement.classList.contains('dark'));
-      };
-
-      checkDarkMode();
-
-      // Set up observer to detect theme changes
-      const observer = new MutationObserver(checkDarkMode);
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['class'],
-      });
-
-      return () => observer.disconnect();
-    }, []);
 
     useEffect(() => {
       if (!containerRef.current) return;

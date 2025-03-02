@@ -14,7 +14,7 @@ import ElementLegend from './components/ElementLegend';
 import ElementDetails from './components/ElementDetails';
 import ElementInfoBar from './components/ElementInfoBar';
 
-// Dynamic imports for p5.js components
+// Dynamic imports for p5.js components (updated to avoid react-p5)
 const BackgroundAnimation = dynamic(() => import('./BackgroundAnimation'), {
   loading: () => <div className="fixed inset-0 bg-transparent"></div>,
   ssr: false,
@@ -26,7 +26,9 @@ const PeriodicTable: React.FC = () => {
     null
   );
   const [showFunMode, setShowFunMode] = useState<boolean>(false);
-  const [_windowWidth, setWindowWidth] = useState<number>(0);
+
+  // Use ref instead of state for window width tracking since we don't need rendering
+  const windowWidthRef = useRef<number>(0);
   const tableRef = useRef<HTMLDivElement>(null);
   const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -35,11 +37,12 @@ const PeriodicTable: React.FC = () => {
     const handleResize = () => {
       if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
       resizeTimeoutRef.current = setTimeout(() => {
-        setWindowWidth(window.innerWidth);
+        windowWidthRef.current = window.innerWidth;
+        // If we need to do something with the window width, we can do it here
       }, 100);
     };
 
-    setWindowWidth(window.innerWidth);
+    windowWidthRef.current = window.innerWidth;
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -55,9 +58,12 @@ const PeriodicTable: React.FC = () => {
     );
   }, []);
 
-  const handleCategoryFilter = useCallback((category: ElementGroup): void => {
-    setSelectedCategory((prev) => (prev === category ? null : category));
-  }, []);
+  const handleCategoryFilter = useCallback(
+    (category: ElementGroup | null): void => {
+      setSelectedCategory((prev) => (prev === category ? null : category));
+    },
+    []
+  );
 
   const toggleFunMode = useCallback((): void => {
     setShowFunMode((prev) => !prev);

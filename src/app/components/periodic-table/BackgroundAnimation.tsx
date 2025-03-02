@@ -141,7 +141,7 @@ const BackgroundAnimation: React.FC = React.memo(() => {
         p5InstanceRef.current = null;
       }
     };
-  }, [createParticle]);
+  }, [createParticle, isDarkMode]);
 
   return (
     <div

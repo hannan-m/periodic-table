@@ -9,7 +9,7 @@ interface FilterControlsProps {
   >;
   selectedCategory: ElementGroup | null;
   showFunMode: boolean;
-  onCategoryFilter: (category: ElementGroup) => void;
+  onCategoryFilter: (category: ElementGroup | null) => void;
   onToggleFunMode: () => void;
 }
 
@@ -40,7 +40,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({
         ))}
         <button
           className="px-3 py-2 rounded-full text-sm bg-gradient-to-r from-gray-700 to-gray-600 text-white shadow-md hover:from-gray-600 hover:to-gray-500 transition-all font-medium"
-          onClick={() => onCategoryFilter(null as any)}
+          onClick={() => onCategoryFilter(null)}
           data-testid="clear-filter"
         >
           All Elements
