@@ -6,7 +6,7 @@
 
 <br> <img src="https://github.com/hannan-m/periodic-table/blob/main/public/preview.png" alt="Interactive Periodic Table" width="850px"> <h3>A modern, interactive periodic table with stunning visualizations and detailed element information.</h3>
 
-[✨ Live Demo](periodic-table-six-flame.vercel.app/)
+[✨ Live Demo](https://periodic-table-six-flame.vercel.app/)
 
 </div>
 
