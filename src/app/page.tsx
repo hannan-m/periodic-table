@@ -96,7 +96,7 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gray-500/20 to-transparent"></div>
           <p className="mt-4 italic">
             &ldquo;The elements and their behavior are the manifestation of
-            nature's beauty.&rdquo;
+            nature&apos;s beauty.&rdquo;
           </p>
           <p className="mt-2 font-mono">
             Interactive Periodic Table &copy; {new Date().getFullYear()}
